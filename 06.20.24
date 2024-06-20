@@ -1,0 +1,875 @@
+{
+ "cells": [
+  {
+   "cell_type": "markdown",
+   "id": "ac4b1374",
+   "metadata": {},
+   "source": [
+    "# Introduction to Functions"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "fee584a0",
+   "metadata": {},
+   "source": [
+    "## A function is a block or organized, reusable code that is used to perform a single, relation action. Functions provide better modularity for your application and a high degree of code reusability."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 1,
+   "id": "53c9a992",
+   "metadata": {},
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "'\\ndef function_name(parameters):\\n\\n    \"\"\"\\n    Docstring explaining the function\\n    \"\"\"\\n    \\n    Function Body\\n    return result\\n'"
+      ]
+     },
+     "execution_count": 1,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "'''\n",
+    "def function_name(parameters):\n",
+    "\n",
+    "    \"\"\"\n",
+    "    Docstring explaining the function\n",
+    "    \"\"\"\n",
+    "    \n",
+    "    Function Body\n",
+    "    return result\n",
+    "'''"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "277bad0b",
+   "metadata": {},
+   "source": [
+    "## Key Concepts"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "21e8bc84",
+   "metadata": {},
+   "source": [
+    "1. Function Definition and Calling:\n",
+    "- Define a function using a def keyword\n",
+    "- Call a function using its name followed by parentheses\n",
+    "\n",
+    "2. Parameters and Arguments:\n",
+    "- Parameters: Variables listed inside the parantheses in the function definition\n",
+    "- Arguments: Values passed to the function \n",
+    "\n",
+    "3. Return Statement:\n",
+    "- The return statement is used to exit a function and go back to the place from where it was called.\n",
+    "\n",
+    "4. Default Arguments:\n",
+    "- Function arguments can have default values.\n",
+    "\n",
+    "5. Variable Scope:\n",
+    "- Variables defined inside a function are local to that function."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 2,
+   "id": "445fea3f",
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "Hello, Alice!\n"
+     ]
+    }
+   ],
+   "source": [
+    "#Basic Function\n",
+    "def greet(name):\n",
+    "    '''\n",
+    "    Function to greet a person.\n",
+    "    '''\n",
+    "    \n",
+    "    return f\"Hello, {name}!\"\n",
+    "\n",
+    "#Calling the Function\n",
+    "print(greet('Alice'))"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 3,
+   "id": "86f29141",
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "Hello, World!\n",
+      "Hello, Alice!\n"
+     ]
+    }
+   ],
+   "source": [
+    "#Function with Default Arguments\n",
+    "def greet(name = 'World'):\n",
+    "    '''\n",
+    "    Function to greet a person with a default name.\n",
+    "    '''\n",
+    "    \n",
+    "    return f\"Hello, {name}!\"\n",
+    "\n",
+    "#Calling the Function\n",
+    "print(greet())\n",
+    "print(greet('Alice'))"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 4,
+   "id": "a25efa0f",
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "Add: 15, Subtract: 5, Multiply: 50, Divide: 2.0\n"
+     ]
+    }
+   ],
+   "source": [
+    "#Function Returning Multiple Values\n",
+    "def arithmetic_operations(a, b):\n",
+    "    '''\n",
+    "    Function to perform arithmetic operations.\n",
+    "    '''\n",
+    "    \n",
+    "    addition = a + b\n",
+    "    subtraction = a - b\n",
+    "    multiplication = a * b\n",
+    "    division = a / b if b != 0 else none\n",
+    "    \n",
+    "    return addition, subtraction, multiplication, division\n",
+    "\n",
+    "#Calling the Function\n",
+    "add, sub, mul, div = arithmetic_operations(10, 5)\n",
+    "print(f'Add: {add}, Subtract: {sub}, Multiply: {mul}, Divide: {div}')"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "4a61e07d",
+   "metadata": {},
+   "source": [
+    "## Functions in Data Science"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 5,
+   "id": "9a214e65",
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "   sepal_length  sepal_width  petal_length  petal_width      species\n",
+      "0           5.1          3.5           1.4          0.2  Iris-setosa\n",
+      "1           4.9          3.0           1.4          0.2  Iris-setosa\n",
+      "2           4.7          3.2           1.3          0.2  Iris-setosa\n",
+      "3           4.6          3.1           1.5          0.2  Iris-setosa\n",
+      "4           5.0          3.6           1.4          0.2  Iris-setosa\n"
+     ]
+    }
+   ],
+   "source": [
+    "#Reading Data\n",
+    "import pandas as pd\n",
+    "from sklearn.model_selection import train_test_split\n",
+    "from sklearn.linear_model import LogisticRegression\n",
+    "from sklearn.preprocessing import LabelEncoder\n",
+    "\n",
+    "def read_data(file_path):\n",
+    "    '''\n",
+    "    Function to read CSV data.\n",
+    "    '''\n",
+    "    \n",
+    "    return pd.read_csv(file_path, header = None, names = ['sepal_length', 'sepal_width', 'petal_length', 'petal_width', 'species'])\n",
+    "\n",
+    "#Example Usage\n",
+    "url = 'https://archive.ics.uci.edu/ml/machine-learning-databases/iris/iris.data'\n",
+    "df = read_data(url)\n",
+    "print(df.head())"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 6,
+   "id": "33110ceb",
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "   sepal_length  sepal_width  petal_length  petal_width  species\n",
+      "0           5.1          3.5           1.4          0.2        0\n",
+      "1           4.9          3.0           1.4          0.2        0\n",
+      "2           4.7          3.2           1.3          0.2        0\n",
+      "3           4.6          3.1           1.5          0.2        0\n",
+      "4           5.0          3.6           1.4          0.2        0\n"
+     ]
+    }
+   ],
+   "source": [
+    "#Data Preprocessing\n",
+    "def preprocess_data(df):\n",
+    "    '''\n",
+    "    Function to preprocess data.\n",
+    "    '''\n",
+    "    \n",
+    "    #Encode the Target Variable\n",
+    "    label_encoder = LabelEncoder()\n",
+    "    df['species'] = label_encoder.fit_transform(df['species'])\n",
+    "    \n",
+    "    return df\n",
+    "\n",
+    "#Preprocess the Data\n",
+    "df_clean = preprocess_data(df)\n",
+    "print(df_clean.head())"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 7,
+   "id": "1a18e210",
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "Model Accuracy: 1.0\n"
+     ]
+    }
+   ],
+   "source": [
+    "#Model Training\n",
+    "def train_model(x, y):\n",
+    "    '''\n",
+    "    Function to train a logistic regression model\n",
+    "    '''\n",
+    "    \n",
+    "    x_train, x_test, y_train, y_test, = train_test_split(x, y, test_size = 0.2, random_state = 42)\n",
+    "    model = LogisticRegression(max_iter = 200)\n",
+    "    model.fit(x_train, y_train)\n",
+    "    \n",
+    "    return model, x_test, y_test\n",
+    "\n",
+    "#Example Usage\n",
+    "x = df_clean.drop('species', axis = 1)\n",
+    "y = df_clean['species']\n",
+    "model, x_test, y_test = train_model(x, y)\n",
+    "print(f'Model Accuracy: {model.score(x_test, y_test)}')"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "f3a5d36b",
+   "metadata": {},
+   "source": [
+    "## Real-World Questions on Functions"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 8,
+   "id": "24ebce08",
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "{'Product A': 225.0, 'Product B': 550.0, 'Product C': 175.0}\n"
+     ]
+    }
+   ],
+   "source": [
+    "#Question 1: Calculate the Monthly Sales Average\n",
+    "\"\"\" \n",
+    "You are given a dictionary where the keys are product names and the values are lists of monthly \n",
+    "sales figures for each product. Write a function to calculate the average monthly sales for each \n",
+    "product. \n",
+    "\"\"\"\n",
+    "\n",
+    "import numpy as np\n",
+    "\n",
+    "#Sample Data\n",
+    "sales_data = {\n",
+    "    'Product A': [150, 200, 250, 300],\n",
+    "    'Product B': [400, 500, 600, 700],\n",
+    "    'Product C': [100, 150, 200, 250]\n",
+    "\n",
+    "}\n",
+    "\n",
+    "def calculate_monthly_averages(sales_data):\n",
+    "    '''\n",
+    "    Function to calculate the average monthly sales for each product.\n",
+    "    '''\n",
+    "    \n",
+    "    averages = {}\n",
+    "    \n",
+    "    for product, sales in sales_data.items():\n",
+    "        averages[product]  = np.mean(sales)\n",
+    "        \n",
+    "    return averages\n",
+    "\n",
+    "#Example Usage\n",
+    "averages = calculate_monthly_averages(sales_data)\n",
+    "print(averages)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 9,
+   "id": "75138fe5",
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "4\n",
+      "4\n"
+     ]
+    }
+   ],
+   "source": [
+    "#Question 2: Count Unique Values in a Dataframe Column\n",
+    "'''\n",
+    "Given a DataFrame, write a function to count the number of unique values in a specified column.\n",
+    "'''\n",
+    "\n",
+    "import pandas as pd\n",
+    "\n",
+    "#Sample data\n",
+    "data = {\n",
+    "    'Name': ['Alice', 'Bob', 'Charlie', 'David', 'Alice'],\n",
+    "    'Age': [25, 30, 35, 40, 25]\n",
+    "}\n",
+    "df = pd.DataFrame(data)\n",
+    "\n",
+    "def count_unique_values(df, column):\n",
+    "    '''\n",
+    "    Function to count the number of unique values in a specified column.\n",
+    "    '''\n",
+    "    \n",
+    "    return df[column].nunique()\n",
+    "\n",
+    "#Example Usage\n",
+    "unique_names_count = count_unique_values(df, 'Name')\n",
+    "print(unique_names_count)\n",
+    "\n",
+    "unique_ages_count = count_unique_values(df, 'Age')\n",
+    "print(unique_ages_count)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 10,
+   "id": "b0899805",
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "      A     B\n",
+      "0  0.00  0.00\n",
+      "1  0.25  0.25\n",
+      "2  0.50  0.50\n",
+      "3  0.75  0.75\n",
+      "4  1.00  1.00\n"
+     ]
+    }
+   ],
+   "source": [
+    "#Question 3: Normalize Data in a DataFrame\n",
+    "'''\n",
+    "Write a function to normalize the data in a DataFrame such that each value \n",
+    "in a column is scaled to a range of 0 to 1.\n",
+    "'''\n",
+    "\n",
+    "import pandas as pd\n",
+    "\n",
+    "#Sample data\n",
+    "data = {\n",
+    "    'A': [1, 2, 3, 4, 5],\n",
+    "    'B': [10, 20, 30, 40, 50]\n",
+    "}\n",
+    "df = pd.DataFrame(data)\n",
+    "\n",
+    "def normalize_column(df):\n",
+    "    '''\n",
+    "    Function to normalize the data in the DataFrame.\n",
+    "    '''\n",
+    "    \n",
+    "    result = df.copy()\n",
+    "    \n",
+    "    for column in result.columns:\n",
+    "        max_value = result[column].max()\n",
+    "        min_value = result[column].min()\n",
+    "        result[column] = (result[column] - min_value) / (max_value - min_value)\n",
+    "        \n",
+    "    return result\n",
+    "\n",
+    "#Example usage\n",
+    "normalized_df = normalize_column(df)\n",
+    "print(normalized_df)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 11,
+   "id": "2db9cc87",
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "A    1\n",
+      "B    2\n",
+      "C    2\n",
+      "dtype: int64\n"
+     ]
+    }
+   ],
+   "source": [
+    "#Question 4: Find Missing Values\n",
+    "'''\n",
+    "Given a DataFrame, write a function to find and return the number of missing values in each column.\n",
+    "'''\n",
+    "\n",
+    "import pandas as pd\n",
+    "\n",
+    "#Sample data\n",
+    "data = {\n",
+    " 'A': [1, 2, None, 4, 5],\n",
+    " 'B': [None, 2, 3, 4, None],\n",
+    " 'C': [1, None, 3, None, 5]\n",
+    "}\n",
+    "df = pd.DataFrame(data)\n",
+    "\n",
+    "def find_missing_values(df):\n",
+    " '''\n",
+    " Function to find the number of missing values in each column.\n",
+    " '''\n",
+    "\n",
+    " return df.isnull().sum()\n",
+    "\n",
+    "#Example usage\n",
+    "missing_values = find_missing_values(df)\n",
+    "print(missing_values)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 12,
+   "id": "fd975246",
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "  Department  Salary\n",
+      "0    Finance   70000\n",
+      "1         HR   95000\n",
+      "2         IT  125000\n"
+     ]
+    }
+   ],
+   "source": [
+    "#Question 6: Grouping and Aggregation\n",
+    "'''\n",
+    "How do you group a DataFrame by a column and compute the sum of another column?\n",
+    "'''\n",
+    "\n",
+    "import pandas as pd\n",
+    "\n",
+    "#Sample data\n",
+    "data = {\n",
+    " 'Department': ['HR', 'IT', 'HR', 'IT', 'Finance'],\n",
+    " 'Salary': [50000, 60000, 45000, 65000, 70000]\n",
+    "}\n",
+    "df = pd.DataFrame(data)\n",
+    "\n",
+    "def group_and_aggregate(df):\n",
+    " '''\n",
+    " Function to group by 'Department' and compute the sum of 'Salary'.\n",
+    " '''\n",
+    " return df.groupby('Department')['Salary'].sum().reset_index()\n",
+    "\n",
+    "#Example usage\n",
+    "result = group_and_aggregate(df)\n",
+    "print(result)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "e3575ff0",
+   "metadata": {},
+   "source": [
+    "## Pandas Questions"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 13,
+   "id": "f883fd5a",
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "     Name  Age  Score\n",
+      "0    Zeik   26     82\n",
+      "3  Victor   29     97\n",
+      "4    Mark   27     88\n"
+     ]
+    }
+   ],
+   "source": [
+    "#Question 1: Filter DataFrame by Multiple Conditions: Given a DataFrame with columns Name, Age, and Score, write a function to filter rows where Age is greater than 25 and Score is greater than 80.\n",
+    "\n",
+    "import pandas as pd\n",
+    "\n",
+    "#Sample data\n",
+    "data = {\n",
+    " 'Name': ['Zeik', 'Sarah', 'Joey', 'Victor', 'Mark'],\n",
+    " 'Age': [26, 21, 19, 29, 27],\n",
+    " 'Score': [82, 80, 75, 97, 88]\n",
+    "}\n",
+    "\n",
+    "df = pd.DataFrame(data)\n",
+    "def filter_df(df):\n",
+    "\n",
+    "    return df[(df['Age'] > 25) & (df['Score'] > 80)]\n",
+    "\n",
+    "print(filter_df(df))"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 14,
+   "id": "37296dc0",
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "              Salary\n",
+      "Department          \n",
+      "Finance      90000.0\n",
+      "HR           82500.0\n",
+      "IT          116000.0\n"
+     ]
+    }
+   ],
+   "source": [
+    "#Question 2: Pivot Table Creation: Given a DataFrame with columns Department, Employee, and Salary,write a function to create a pivot table that shows the average salary for each department.\n",
+    "\n",
+    "import pandas as pd\n",
+    "\n",
+    "data = {\n",
+    " 'Department': ['HR', 'IT', 'HR', 'IT', 'Finance'],\n",
+    " 'Employee': ['Kartherine', 'Matt', 'Ethan', 'Mia', 'Amanda'],\n",
+    " 'Salary': [80000, 110000, 85000, 122000, 90000]\n",
+    "}\n",
+    "\n",
+    "df = pd.DataFrame(data)\n",
+    "def pivot_table(df):\n",
+    "    pivot_table = df.pivot_table(index = 'Department', values = 'Salary', aggfunc = 'mean')\n",
+    "\n",
+    "    return pivot_table\n",
+    "\n",
+    "print(pivot_table(df))"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 15,
+   "id": "8522fc4b",
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "   ID     Name  Age\n",
+      "0   2      Bob   25\n",
+      "1   3  Charlie   30\n"
+     ]
+    }
+   ],
+   "source": [
+    "#Question 3: Merge DataFrames: Given two DataFrames, df1 and df2, which both have a common column ID, write a function to merge these DataFrames on the ID column and return the merged DataFrame.\n",
+    "\n",
+    "import pandas as pd\n",
+    "\n",
+    "df1 = pd.DataFrame({'ID': [1, 2, 3], 'Name': ['Alice', 'Bob', 'Charlie']})\n",
+    "df2 = pd.DataFrame({'ID': [2, 3, 4], 'Age': [25, 30, 35]})\n",
+    "\n",
+    "def merge_dataframes(df1, df2, id_column):\n",
+    "    merged_df = pd.merge(df1, df2, on = id_column)\n",
+    "\n",
+    "    return merged_df\n",
+    "\n",
+    "print(merge_dataframes(df1, df2, 'ID'))"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 16,
+   "id": "ab7ad466",
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "     A       B     C\n",
+      "0  1.0   Apple  14.0\n",
+      "1  2.0  Banana  25.0\n",
+      "2  3.0  Banana  38.0\n",
+      "3  4.0  Orange  25.0\n",
+      "4  5.0  Banana  23.0\n"
+     ]
+    }
+   ],
+   "source": [
+    "#Question 4: Handle Missing Values: Write a function to fill missing values in a DataFrame. If the column is numerical, fill with the mean of the column. If the column is categorical, fill with the mode of the column.\n",
+    "\n",
+    "import pandas as pd\n",
+    "\n",
+    "#Sample data\n",
+    "data = {\n",
+    " 'A': [1, 2, None, 4, 5],\n",
+    " 'B': ['Apple', 'Banana', 'Banana', 'Orange', None],\n",
+    " 'C': [14, None, 38, None, 23]\n",
+    " }\n",
+    "\n",
+    "df = pd.DataFrame(data)\n",
+    "\n",
+    "def fill_missing_values(df):\n",
+    "    for col in df.columns:\n",
+    "\n",
+    "        if df[col].dtype == 'float64':\n",
+    "            df[col] = df[col].fillna(df[col].mean())\n",
+    "\n",
+    "        else:\n",
+    "            df[col] = df[col].fillna(df[col].mode()[0])\n",
+    "\n",
+    "    return df\n",
+    "\n",
+    "print(fill_missing_values(df))"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "b99dcf0f",
+   "metadata": {},
+   "source": [
+    "## List Questions"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 17,
+   "id": "f557692d",
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "[[1, 2, 3], [4, 5, 6], [7, 8, 9]]\n"
+     ]
+    }
+   ],
+   "source": [
+    "#Question 1: Chunk a List: Write a function to split a list into chunks of a given size. For example, given the list [1, 2, 3, 4, 5, 6, 7, 8, 9] and chunk size 3, the function should return [[1, 2, 3], [4, 5, 6], [7, 8, 9]].\n",
+    "\n",
+    "data = [1, 2, 3, 4, 5, 6, 7, 8, 9]\n",
+    "chunk_size = 3\n",
+    "\n",
+    "def chunk_list(data, chunk_size):\n",
+    "    return [data[i:i+chunk_size] for i in range(0, len(data), chunk_size)]\n",
+    "\n",
+    "print(chunk_list(data, chunk_size))"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 18,
+   "id": "c5696a82",
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "[3, 4, 5]\n"
+     ]
+    }
+   ],
+   "source": [
+    "#Question 2: List Intersection: Write a function to find the intersection of two lists, returning a list of elements that are present in both lists.\n",
+    "\n",
+    "list1 = [1, 2, 3, 4, 5]\n",
+    "list2 = [3, 4, 5, 6, 7]\n",
+    "\n",
+    "def list_intersection(list1, list2):\n",
+    "    intersection = []\n",
+    "    for item in list1:\n",
+    "\n",
+    "        if item in list2:\n",
+    "            intersection.append(item)\n",
+    "\n",
+    "    return intersection\n",
+    "\n",
+    "print(list_intersection(list1, list2))"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 19,
+   "id": "1211d639",
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "[3, 4, 5, 1, 2]\n"
+     ]
+    }
+   ],
+   "source": [
+    "#Question 3: Rotate List: Write a function to rotate a list n positions to the left. For example, rotating [1, 2, 3, 4, 5] by 2 positions should result in [3, 4, 5, 1, 2].\n",
+    "\n",
+    "data = [1, 2, 3, 4, 5]\n",
+    "n = 2\n",
+    "\n",
+    "def rotate_list(data, n):\n",
+    "    return data[n:] + data[:n]\n",
+    "\n",
+    "print(rotate_list(data, 2))"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 20,
+   "id": "20735b2d",
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "[2, 3]\n"
+     ]
+    }
+   ],
+   "source": [
+    "#Question 4: Find Duplicates: Write a function to find all duplicate elements in a list. The function should return a list of duplicates.\n",
+    "\n",
+    "data = [1, 2, 3, 4, 2, 5, 3, 6]\n",
+    "\n",
+    "def find_duplicates(data):\n",
+    "    duplicates = []\n",
+    "    seen = set()\n",
+    "\n",
+    "    for item in data:\n",
+    "\n",
+    "        if item in seen:\n",
+    "            duplicates.append(item)\n",
+    "\n",
+    "        else:\n",
+    "            seen.add(item)\n",
+    "\n",
+    "    return duplicates\n",
+    "\n",
+    "print(find_duplicates(data))"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 21,
+   "id": "245f680f",
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "[1, 3, 6, 10]\n"
+     ]
+    }
+   ],
+   "source": [
+    "#Question 5: Cumulative Sum: Write a function to compute the cumulative sum of a list. For example, given the list [1, 2, 3, 4], the function should return [1, 3, 6, 10].\n",
+    "\n",
+    "mylist = [1, 2, 3, 4]\n",
+    "\n",
+    "def cumulative_sum(mylist):\n",
+    "    cumulative_sum = []\n",
+    "    sum = 0\n",
+    "\n",
+    "    for num in mylist:\n",
+    "        sum += num\n",
+    "        cumulative_sum.append(sum)\n",
+    "\n",
+    "    return cumulative_sum\n",
+    "\n",
+    "print(cumulative_sum(mylist))"
+   ]
+  }
+ ],
+ "metadata": {
+  "kernelspec": {
+   "display_name": "Python 3 (ipykernel)",
+   "language": "python",
+   "name": "python3"
+  },
+  "language_info": {
+   "codemirror_mode": {
+    "name": "ipython",
+    "version": 3
+   },
+   "file_extension": ".py",
+   "mimetype": "text/x-python",
+   "name": "python",
+   "nbconvert_exporter": "python",
+   "pygments_lexer": "ipython3",
+   "version": "3.11.7"
+  }
+ },
+ "nbformat": 4,
+ "nbformat_minor": 5
+}
